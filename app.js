@@ -4,8 +4,18 @@ const date = require(__dirname+"/date.js");
 const mongoose = require("mongoose");
 const app = express();
 
-const items = ["Buy Food", "Cook Food", "Eat Food"];
-const workItems = [];
+mongoose.connect("mongodb://localhost:27017/todolistdb");
+
+const itemSchema = {
+    name: String
+};
+
+const Item = mongoose.model("item", itemSchema);
+
+const Item1 = new Item({
+    name: "Welcome to your Todo List"
+})
+
 
 app.set('view engine', 'ejs');
 
